@@ -27,8 +27,23 @@ You can find some of the example components that are using the state hooks under
 Clone this repository
 
 ```
-git clone https://github.com/ryanbaldisco/cra-hooks-store-boilerplate.git
+git clone https://github.com/ryanbaldisco/cra-hooks-store-boilerplate.git <project-folder>
+cd <project-folder>
 ```
+
+Install dependencies
+
+```
+npm install
+```
+
+Run development
+
+```
+npm start
+```
+
+### Global state management implementation
 
 Wrap your app components that needs to access the states with the store provider.
 
