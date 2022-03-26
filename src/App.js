@@ -4,7 +4,6 @@ import Logo from './components/Logo';
 import Button from './components/Button';
 
 function App() {
-
   return (
     <StoreProvider>
       <div className="App">

@@ -1,6 +1,90 @@
-# Getting Started with Create React App
+# CRA Hooks Store Boilerplate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple project that is bootstrapped with [Create React App](https://github.com/facebook/create-react-app) with added boilerplate for global state management using the native React Hooks.
+
+## State Management
+
+You can find the state management codes under the `src/store` directory. If you're familiar with React Redux then you'll have no problem understanding the code structure.
+
+```
+- actions.js
+- reducers.js
+- types.js
+- StoreContext.js
+```
+
+## Example Components
+
+You can find some of the example components that are using the state hooks under `src/components` directory.
+
+```
+- Button.js
+- Logo.js
+```
+
+## Usage
+
+Clone this repository
+
+```
+git clone https://github.com/ryanbaldisco/cra-hooks-store-boilerplate.git
+```
+
+Wrap your app components that needs to access the states with the store provider.
+
+```
+import { StoreProvider } from './store/StoreContext';
+
+function App() {
+    return (
+        <StoreProvider>
+            <div className="App">
+                // children components
+            </div>
+        </StoreProvider>
+    );
+}
+
+export default App;
+```
+
+Access your global states and actions in the children components.
+
+```
+.
+.
+.
+import { StoreContext } from '../store/StoreContext';
+
+function Logo() {
+    const { state } = useContext(StoreContext);
+
+    return (
+        <img src={logo} className="App-logo" alt="logo"
+            style={{
+              animation: `${state.spin_cls_dir} infinite 20s linear`,
+            }}
+        />
+    );
+}
+.
+.
+.
+
+function Button() {
+    const { actions } = useContext(StoreContext);
+
+    return (
+        <button
+            onClick={() => actions.spinLogo()}
+        >
+            Button
+        </button>
+    );
+}
+```
+
+### That's it!
 
 ## Available Scripts
 
@@ -39,33 +123,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # cra-hooks-store-boilerplate
